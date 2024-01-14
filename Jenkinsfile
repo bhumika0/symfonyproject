@@ -13,5 +13,12 @@ pipeline {
                 sh '/usr/local/bin/composer install --optimize-autoloader'
             }
         }
+
+        stage('Run Tests') {
+            steps {
+                sh 'php bin/phpunit'
+            }
+        }
+
     }
 }
