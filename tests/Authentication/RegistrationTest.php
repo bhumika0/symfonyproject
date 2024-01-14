@@ -10,7 +10,7 @@ class RegistrationTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $crawler = $client->request('GET', 'http://localhost:8000/register');
+        $crawler = $client->request('GET', '/register');
 
         $form = $crawler->selectButton('Register')->form();
 
