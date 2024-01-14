@@ -10,7 +10,7 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh '/usr/local/bin/composer install --no-dev --optimize-autoloader'
+                sh '/usr/local/bin/composer install --optimize-autoloader'
             }
         }
     }
