@@ -12,7 +12,7 @@ class AnswerTest extends WebTestCase
 
         // Log in or register a user (depending on your authentication setup)
         // Load login page
-        $crawler = $client->request('GET', 'http://localhost:8000/login');
+        $crawler = $client->request('GET', '/login');
 
         // Fill in the login form with valid credentials
         $form = $crawler->selectButton('Sign in')->form();
