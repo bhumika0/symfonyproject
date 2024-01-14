@@ -10,7 +10,7 @@ class AuthenticationTest extends WebTestCase
         $client = static::createClient();
 
         // Load login page
-        $crawler = $client->request('GET', 'http://localhost:8000/login');
+        $crawler = $client->request('GET', '/login');
 
         // Fill in the login form with valid credentials
         $form = $crawler->selectButton('Sign in')->form();
@@ -20,6 +20,6 @@ class AuthenticationTest extends WebTestCase
         // Submit the form
         $client->submit($form);
 
-        $this->assertResponseRedirects('http://localhost:8000/'); // Redirect to the homepage or another route after successful login
+        $this->assertResponseRedirects('/'); // Redirect to the homepage or another route after successful login
     }
 }
