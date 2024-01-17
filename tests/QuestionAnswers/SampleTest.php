@@ -1,3 +1,3 @@
 <?php
- echo "Test trigger dev";
+ echo "Test trigger dev 2";
 ?>
