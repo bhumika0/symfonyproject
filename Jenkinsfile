@@ -6,7 +6,7 @@ pipeline {
         SSH_KEY = credentials('bhumika')
         SSH_USER = 'bhumika'
         SSH_HOST = 'localhost'
-        DEPLOY_PATH = '/var/www/html/cauldron-overflow-dev'
+        DEPLOY_PATH = '/var/www/html/cauldron-overflow-stage'
     }
 
     stages {
