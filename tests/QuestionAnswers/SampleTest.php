@@ -1,3 +1,3 @@
 <?php
- echo "Bye again";
+ echo "Bye again stage test";
 ?>
