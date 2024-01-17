@@ -32,7 +32,7 @@ pipeline {
             steps{
                 script{
                     sshagent(['bhumika']) {
-                        sh "scp -r -i ${SSH_KEY} . ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+                        sh 'scp -r -i ${SSH_KEY} * ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}'
                     } 
                 }  
             }
