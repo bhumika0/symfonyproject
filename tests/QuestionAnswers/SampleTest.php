@@ -1,3 +1,3 @@
 <?php
- echo "Bye again stage test 2";
+ echo "test pipeline trigger";
 ?>
