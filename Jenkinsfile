@@ -21,7 +21,7 @@ pipeline {
                 sh '/usr/local/bin/composer install --optimize-autoloader'
                 sh 'npm install'
                 sh 'yarn install'
-                sh 'yarn encore dev'
+                sh 'NODE_OPTIONS=--openssl-legacy-provider yarn encore dev'
             }
         }
 
