@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         // Define environment variables as needed
-        SSH_KEY = credentials('/home/bhumika/.ssh/id_rsa.pub')
+        SSH_KEY = credentials('bhumika')
         SSH_USER = 'bhumika'
         SSH_HOST = 'localhost'
         DEPLOY_PATH = '/var/www/html/cauldron-overflow-dev'
@@ -29,11 +29,13 @@ pipeline {
         // }
 
         stage('Build and Deploy') {
-            steps {
-                    sh 'scp -r -i ${SSH_KEY} . ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}'
+            steps{
+                script{
+                    sshagent(['bhumika']) {
+                        sh 'scp -r -i ${SSH_KEY} . ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}'
+                    } 
+                }  
             }
-        
         }
-
     }
 }
