@@ -30,7 +30,7 @@ pipeline {
 
         stage('Build and Deploy') {
             steps {
-                    sh "scp -r -i ${SSH_KEY} . ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+                    sh 'scp -r -i ${SSH_KEY} . ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}'
             }
         
         }
