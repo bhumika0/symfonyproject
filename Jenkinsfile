@@ -30,15 +30,12 @@ pipeline {
 
         stage('Build and Deploy') {
             script {
-                    
-                    // Deploy to server via SSH
-                    sshagent(['your-ssh-key-credential-id']) {
-                        sh "scp -r -i ${SSH_KEY} . ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
-                        
-                    }
-
+                // Deploy to server via SSH
+                sshagent(['your-ssh-key-credential-id']) {
+                    sh "scp -r -i ${SSH_KEY} . ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}"
+                }
+            }
         }
-
+        
     }
-}
 }
