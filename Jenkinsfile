@@ -22,11 +22,11 @@ pipeline {
             }
         }
 
-        // stage('Run Tests') {
-        //     steps {
-        //         sh 'php bin/phpunit'
-        //     }
-        // }
+        stage('Run Tests') {
+            steps {
+                sh 'php bin/phpunit'
+            }
+        }
 
         stage('Build and Deploy') {
             steps{
