@@ -40,5 +40,17 @@ pipeline {
                 }  
             }
         }
+
+        stage('Database Migrations') {
+            steps {
+                script {
+                    sshagent(['bhumika']) {
+                        sh "ssh -i ${SSH_KEY} ${SSH_USER}@${SSH_HOST} 'cd ${DEPLOY_PATH} && php bin/console doctrine:migrations:migrate --no-interaction'"
+                    }
+                }
+            }
+        }
+
+        
     }
 }
