@@ -170,17 +170,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
 
         return $this;
     }
-    public function getLastName(): ?string
-    {
-        return $this->lastName;
-    }
-
-    public function setLastName(string $firstName): self
-    {
-        $this->lastName = $lastName;
-
-        return $this;
-    }
 
     public function setPassword(string $password): self
     {
