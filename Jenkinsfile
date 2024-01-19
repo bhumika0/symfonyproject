@@ -35,7 +35,18 @@ pipeline {
             steps {
                 script {
                     sshagent(['bhumika']) {
-                        sh 'scp -r -i ${SSH_KEY} * ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}'
+                        // Define the source directory as the Jenkins workspace
+                        def sourceDir = "${WORKSPACE}"
+
+                        // Use rsync to synchronize files, including deletions, and exclude specific files
+                        sh """
+                            rsync -r --delete --delete-excluded \
+                            --exclude='.git/' \
+                            --exclude='node_modules/' \
+                            --exclude='.env' \
+                            --exclude='.env.test' \
+                            ${sourceDir}/ ${SSH_USER}@${SSH_HOST}:${DEPLOY_PATH}
+                        """
                     }
                 }
             }
