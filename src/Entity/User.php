@@ -45,6 +45,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface, TwoFact
      */
     private $firstName;
 
+     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("user:read")
+     */
+    private $lastName;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
