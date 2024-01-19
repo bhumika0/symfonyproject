@@ -40,7 +40,7 @@ pipeline {
 
                         // Use rsync to synchronize files, including deletions, and exclude specific files
                         sh """
-                            rsync -r --delete --delete-excluded \
+                            rsync -r --delete  \
                             --exclude='.git/' \
                             --exclude='node_modules/' \
                             --exclude='.env' \
