@@ -25,12 +25,6 @@ pipeline {
             }
         }
 
-        stage('Run Tests') {
-            steps {
-                sh 'php bin/phpunit'
-            }
-        }
-
         stage('Build and Deploy') {
             steps {
                 script {
@@ -56,10 +50,19 @@ pipeline {
             steps {
                 script {
                     sshagent(['bhumika']) {
-                        sh "ssh -i ${SSH_KEY} ${SSH_USER}@${SSH_HOST} 'cd ${DEPLOY_PATH} && php bin/console doctrine:migrations:migrate --no-interaction'"
+                        sh "ssh -i ${SSH_KEY} ${SSH_USER}@${SSH_HOST} 'cd ${DEPLOY_PATH} && php bin/console doctrine:migrations:migrate --no-interaction && php bin/console doctrine:migrations:migrate --env=test'"
                     }
                 }
             }
         }
+
+        stage('Run Tests') {
+            steps {
+                sshagent(['bhumika']) {
+                sh "ssh -i ${SSH_KEY} ${SSH_USER}@${SSH_HOST} 'cd ${DEPLOY_PATH} && php bin/phpunit'"
+                }
+            }
+        }
+
     }
 }
