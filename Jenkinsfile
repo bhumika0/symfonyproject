@@ -58,7 +58,9 @@ pipeline {
 
         stage('Run Tests') {
             steps {
-                sh 'php bin/phpunit'
+                sshagent(['bhumika']) {
+                sh "ssh -i ${SSH_KEY} ${SSH_USER}@${SSH_HOST} 'cd ${DEPLOY_PATH} && php bin/phpunit'"
+                }
             }
         }
 
